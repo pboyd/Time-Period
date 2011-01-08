@@ -332,9 +332,9 @@ sub inPeriod {
 
       foreach $range (@ranges) {
 
-        if ($range =~ /-/) {
-          $v1 = $`;
-          $v2 = $';
+        if ($range =~ /(.*)-(.*)/) {
+          $v1 = $1;
+          $v2 = $2;
           return -1 if ($v1 !~ /\w/ || $v2 !~ /\w/);
         } else {
           return -1 if ($range !~ /\w/);
@@ -436,9 +436,9 @@ sub yr {
   my($range, $yr) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     return -1 if ( ($v1 < 0) || ($v2 < 0) );
     return -1 if ( ($v1 > 99) && ($v1 < 1970) );
@@ -480,9 +480,9 @@ sub mo {
           'jun' => 1, 'jul' => 1, 'aug' => 1, 'sep' => 1, 'oct' => 1,
           'nov' => 1, 'dec' => 1);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     if ($v1 =~ /[a-z]/) {
       $v1 = substr($v1, 0, 3);
       return -1 if (!defined($moV{$v1}));
@@ -532,9 +532,9 @@ sub wk {
   my($range, $wk) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     $v1--;
     $v2--;
@@ -563,9 +563,9 @@ sub yd {
   my($range, $yd) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     $v1--;
     $v2--;
@@ -593,9 +593,9 @@ sub md {
   my($range, $md) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     return -1 if ( ($v1 < 1) || ($v1 > 31) );
     return -1 if ( ($v2 < 1) || ($v2 > 31) );
@@ -628,9 +628,9 @@ sub wd {
   %wdV = ('su' => 1, 'mo' => 1, 'tu' => 1, 'we' => 1, 'th' => 1, 'fr' => 1,
           'sa' => 1);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     if ($v1 =~ /[a-z]/) {
       $v1 = substr($v1, 0, 2);
       return -1 if (!defined($wdV{$v1}));
@@ -680,9 +680,9 @@ sub hr {
   my($range, $hr) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     if ($v1 =~ /^(\d+)am$/) {
       if ($1 == 12) {
         $v1 = 0;
@@ -753,9 +753,9 @@ sub min {
   my($range, $min) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     return -1 if ( ($v1 < 0) || ($v1 > 59) );
     return -1 if ( ($v2 < 0) || ($v2 > 59) );
@@ -779,9 +779,9 @@ sub sec {
   my($range, $sec) = @_[0,1];
   my($v1, $v2);
 
-  if ($range =~ /-/) {
-    $v1 = $`;
-    $v2 = $';
+  if ($range =~ /(.*)-(.*)/) {
+    $v1 = $1;
+    $v2 = $2;
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     return -1 if ( ($v1 < 0) || ($v1 > 59) );
     return -1 if ( ($v2 < 0) || ($v2 > 59) );
