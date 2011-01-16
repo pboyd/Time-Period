@@ -50,8 +50,5 @@ is(inPeriod($base_date + $hour * 12, 'hr {12pm}'), 1, '12pm should be treated as
 is(inPeriod($base_date + $hour * 12, 'hr {12pm-13}'), 1, '12pm should be treated as noon (left)');
 is(inPeriod($base_date + $hour * 12, 'hr {11-12pm}'), 1, '12pm should be treated as noon (right)');
 
-TODO: {
-    local $TODO = "missing checks for right side of range";
-    is(inPeriod(0, 'hr {3 - one}'), -1, 'should return -1 for non-numeric hours (right)');
-    is(inPeriod(0, 'hr {1-24}'), -1, 'should return -1 for hours greater than 23 (right)');
-}
+is(inPeriod(0, 'hr {3 - one}'), -1, 'should return -1 for non-numeric hours (right)');
+is(inPeriod(0, 'hr {1-24}'), -1, 'should return -1 for hours greater than 23 (right)');

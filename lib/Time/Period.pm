@@ -43,7 +43,7 @@ Scale must be one of nine different scales (or their equivalent codes):
 	month  |  mo   | 1-12  or  jan, feb, mar, apr, may, jun, jul,
 	       |       |           aug, sep, oct, nov, dec
 	week   |  wk   | 1-6
-	yday   |  yd   | 1-365
+	yday   |  yd   | 1-366
 	mday   |  md   | 1-31
 	wday   |  wd   | 1-7   or  su, mo, tu, we, th, fr, sa
 	hour   |  hr   | 0-23  or  12am 1am-11am 12noon 12pm 1pm-11pm

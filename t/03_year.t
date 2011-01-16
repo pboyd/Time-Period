@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 15;
+use Test::More tests => 16;
 use Time::Period;
 
 my $base_date = 1293858000; # 01/01/2011 00:00:00 (Saturday)
@@ -27,3 +27,10 @@ is(inPeriod(0, 'yr {2000-1960}'), -1, 'should return -1 for years before 1970 (r
 is(inPeriod(0, 'yr {_}'), -1, 'should return -1 for non-alphnumeric years (single)');
 is(inPeriod(0, 'yr {_ - 2000}'), -1, 'should return -1 for non-alphnumeric years (left)');
 is(inPeriod(0, 'yr {2000 - _}'), -1, 'should return -1 for non-alphnumeric years (right)');
+
+# This is an old bug, the 4-digit year calculation used to assume 365 days were
+# in a year, consequently the last day of the a leap year appeared to be in
+# the following year. See https://rt.cpan.org/Public/Bug/Display.html?id=6353
+#
+# (1356930000 = Mon Dec 31 00:00:00 EST 2012)
+is(inPeriod(1356930000, 'yr {2012}'), 1, 'should be able to match the last day of the year on leap year');

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 18;
+use Test::More tests => 19;
 use Time::Period;
 
 my $base_date = 1293858000; # 01/01/2011 00:00:00 (Saturday)
@@ -18,6 +18,8 @@ is(inPeriod($base_date - $week, 'wk {5-1}'), 0, 'should be able to not match a r
 is(inPeriod($base_date - $week, 'wk {3-2}'), 1, 'should be able to match a range of weeks when the first week is greater than the second');
 is(inPeriod($base_date - $week, 'wk {5-4}'), 1, 'should be able to match a range of weeks when the first week is greater than the second');
 is(inPeriod($base_date - $week, 'wk {5-6}'), 0, 'should be able to not match a range of weeks when the first week is less than the second');
+
+is(inPeriod(1296450000, 'wk {6}'), 1, 'should be able to match the 6th week of a month');
 
 is(inPeriod(0, 'wk {one}'), -1, 'should return -1 for non-numeric week numbers (single)');
 is(inPeriod(0, 'wk {one - 3}'), -1, 'should return -1 for non-numeric week numbers (left)');
