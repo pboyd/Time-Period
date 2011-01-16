@@ -398,7 +398,7 @@ sub getTimeVars {
   #   Second    ($sec) = 0-59
 
   # Calculate the full year (yyyy).
-  $yr = int($time / 31536000) + 1970;
+  $yr += 1900;
 
   # Figure out which week $time is in ($wk) so that $wk goes from 0-5.
 
