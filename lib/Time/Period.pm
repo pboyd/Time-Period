@@ -43,7 +43,7 @@ Scale must be one of nine different scales (or their equivalent codes):
 	month  |  mo   | 1-12  or  jan, feb, mar, apr, may, jun, jul,
 	       |       |           aug, sep, oct, nov, dec
 	week   |  wk   | 1-6
-	yday   |  yd   | 1-365
+	yday   |  yd   | 1-366
 	mday   |  md   | 1-31
 	wday   |  wd   | 1-7   or  su, mo, tu, we, th, fr, sa
 	hour   |  hr   | 0-23  or  12am 1am-11am 12noon 12pm 1pm-11pm
@@ -390,7 +390,7 @@ sub getTimeVars {
   # The assumption for the ranges from localtime are
   #   Year      ($yr)  = 0-99
   #   Month     ($mo)  = 0-11
-  #   Year Day  ($yd)  = 0-364
+  #   Year Day  ($yd)  = 0-365
   #   Month Day ($md)  = 1-31
   #   Week Day  ($wd)  = 0-6
   #   Hour      ($hr)  = 0-23
@@ -569,8 +569,8 @@ sub yd {
     return -1 if ( ($v1 =~ /\D/) || ($v2 =~ /\D/) );
     $v1--;
     $v2--;
-    return -1 if ( ($v1 < 0) || ($v1 > 364) );
-    return -1 if ( ($v2 < 0) || ($v2 > 364) );
+    return -1 if ( ($v1 < 0) || ($v1 > 365) );
+    return -1 if ( ($v2 < 0) || ($v2 > 365) );
     if ($v1 > $v2) {
       return 1 if ( ($v1 <= $yd) || ($v2 >= $yd) );
     } else {
@@ -578,7 +578,7 @@ sub yd {
     }
   } else {
     $range--;
-    return -1 if (($range =~ /\D/) || ($range < 0) || ($range > 364));
+    return -1 if (($range =~ /\D/) || ($range < 0) || ($range > 365));
     return 1 if ($range == $yd);
   }
 
