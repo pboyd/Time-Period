@@ -160,19 +160,22 @@ half-hour the rest of the week, use the period
 
 =head1 VERSION
 
-1.21
+1.22
 
 =head1 HISTORY
 
-        Version 1.21
-        ------------
+        Version 1.22
                 - Bug fixes:
-                    - Stopped using $' and $` to improve regex performance
                     - Validate min and max for right side of hour ranges (e.g.
                       hr { 20-25 } now correctly returns -1)
                     - Range for yd is now 1 to 366
                     - Years are no longer considered to be 365 days long for
                       calculating a 4-digit year.
+                    
+
+        Version 1.21
+        ------------
+                - Bug fix: Stopped using $' and $`.
 
 	Version 1.20
 	------------
@@ -196,23 +199,15 @@ half-hour the rest of the week, use the period
 
 =head1 AUTHOR
 
-Patrick Ryan <pgryan@geocities.com>
+Patrick Ryan <perl@pryan.org> wrote it.
+
+Paul Boyd <pboyd@cpan.org> fixed a few bugs.
 
 =head1 COPYRIGHT
 
 Copyright (c) 1997 Patrick Ryan.  All rights reserved.  This Perl module
 uses the conditions given by Perl.  This module may only be distributed
 and or modified under the conditions given by Perl.
-
-=head1 DATE
-
-January 16th, 2011
-
-=head1 SOURCE
-
-This distribution can be found at
-
-	http://www.perl.com/CPAN/modules/by-module/Time/
 
 =cut
 
@@ -223,7 +218,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(inPeriod);
 
-$VERSION = "1.21";
+$VERSION = "1.22";
 
 sub inPeriod {
 
