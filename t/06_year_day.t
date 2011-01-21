@@ -4,7 +4,8 @@ use warnings;
 use Test::More tests => 19;
 use Time::Period;
 
-my $base_date = 1293858000; # 01/01/2011 00:00:00 (Saturday)
+use POSIX;
+my $base_date = POSIX::mktime(0, 0, 0, 1, 0, 111); # 01/01/2011 00:00:00 (Saturday)
 my $day = 24 * 60 * 60;
 
 is(inPeriod($base_date, 'yd {1}'), 1, 'should match a single day');
@@ -32,5 +33,6 @@ is(inPeriod(0, 'yd {367}'), -1, 'should return -1 for day numbers greater than 3
 is(inPeriod(0, 'yd {367-1}'), -1, 'should return -1 for day numbers greater than 366 (left)');
 is(inPeriod(0, 'yd {1-367}'), -1, 'should return -1 for day numbers greater than 366 (right)');
 
-# 1356930000 = Mon Dec 31 00:00:00 EST 2012
-is(inPeriod(1356930000, 'yd {366}'), 1, 'should be able to match the last day of the year on leap year');
+# Dec 31 00:00:00 2012
+my $last_day = POSIX::mktime(0, 0, 0, 31, 11, 112);
+is(inPeriod($last_day, 'yd {366}'), 1, 'should be able to match the last day of the year on leap year');

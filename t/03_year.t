@@ -4,7 +4,8 @@ use warnings;
 use Test::More tests => 16;
 use Time::Period;
 
-my $base_date = 1293858000; # 01/01/2011 00:00:00 (Saturday)
+use POSIX;
+my $base_date = POSIX::mktime(0, 0, 0, 1, 0, 111); # 01/01/2011 00:00:00 (Saturday)
 my $year = 365 * 24 * 60 * 60;
 
 is(inPeriod($base_date, 'yr {2011}'), 1, 'should match a single year');

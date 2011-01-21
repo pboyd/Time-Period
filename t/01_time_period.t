@@ -6,7 +6,8 @@ use Test::More tests => 23;
 BEGIN { use_ok('Time::Period') };
 can_ok(__PACKAGE__, 'inPeriod');
 
-my $base_date = 1293858000; # 01/01/2011 00:00:00 (Saturday)
+use POSIX;
+my $base_date = POSIX::mktime(0, 0, 0, 1, 0, 111); # 01/01/2011 00:00:00 (Saturday)
 my $day = 24 * 60 * 60;
 
 is(inPeriod($base_date, 'wd {sa}'), 1, 'returns 1 for a match');
