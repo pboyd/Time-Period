@@ -160,18 +160,22 @@ half-hour the rest of the week, use the period
 
 =head1 VERSION
 
-1.22
+1.23
 
 =head1 HISTORY
 
-        Version 1.22
+        Version 1.23
+        ------------
                 - Bug fixes:
                     - Validate min and max for right side of hour ranges (e.g.
                       hr { 20-25 } now correctly returns -1)
                     - Range for yd is now 1 to 366
                     - Years are no longer considered to be 365 days long for
                       calculating a 4-digit year.
-                    
+
+        Version 1.23
+        ------------
+                - Fixed tests
 
         Version 1.21
         ------------
@@ -218,7 +222,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(inPeriod);
 
-$VERSION = "1.22";
+$VERSION = "1.23";
 
 sub inPeriod {
 
