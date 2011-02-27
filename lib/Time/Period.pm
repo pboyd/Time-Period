@@ -173,7 +173,7 @@ half-hour the rest of the week, use the period
                     - Years are no longer considered to be 365 days long for
                       calculating a 4-digit year.
 
-        Version 1.23
+        Version 1.22
         ------------
                 - Fixed tests
 
