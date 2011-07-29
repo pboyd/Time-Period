@@ -61,9 +61,9 @@ or
 
 	v-v
 
-For the range specification v-v, if the second value is larger than
-the first value, the range wraps around unless the scale specification
-is year.
+For the range specification v-v, if the first value is larger than the second
+value (e.g. "min {20-10}"), the range wraps around unless the scale
+specification is year.
 
 Year does not wrap because the year is never really reset, it just
 increments.  Ignoring that fact has lead to the dreaded year 2000
@@ -160,9 +160,13 @@ half-hour the rest of the week, use the period
 
 =head1 VERSION
 
-1.23
+1.24
 
 =head1 HISTORY
+
+        Version 1.24
+        ------------
+                - Minor doc update.
 
         Version 1.23
         ------------
@@ -222,7 +226,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(inPeriod);
 
-$VERSION = "1.23";
+$VERSION = "1.24";
 
 sub inPeriod {
 
