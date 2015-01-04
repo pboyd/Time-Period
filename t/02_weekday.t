@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 26;
+use Test::More tests => 27;
 use Time::Period;
 
 use POSIX;
@@ -40,3 +40,6 @@ is(inPeriod($base_date, 'wd {6 - 7}'), 1, 'should allow numeric days (right)');
 is(inPeriod($base_date, 'wd {6 - 17}'), -1, 'should return -1 for numeric days greater than 7 (right)');
 is(inPeriod($base_date, 'wd {1 - 0}'), -1, 'should return -1 for numeric days less than 1 (right)');
 is(inPeriod($base_date, 'wd {6 - _}'), -1, 'should return -1 for non-alphanumeric days (right)');
+
+my $sunday = $base_date + $day;
+is(inPeriod($sunday, 'wd {sunday}'), 1, 'should work for Sundays');

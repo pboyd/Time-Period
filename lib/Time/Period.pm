@@ -160,9 +160,14 @@ half-hour the rest of the week, use the period
 
 =head1 VERSION
 
-1.24
+1.25
 
 =head1 HISTORY
+
+        Version 1.25
+        ------------
+                - Fixed a bug with matching week on Sundays
+                (https://rt.cpan.org/Public/Bug/Display.html?id=100850)
 
         Version 1.24
         ------------
@@ -226,7 +231,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(inPeriod);
 
-$VERSION = "1.24";
+$VERSION = "1.25";
 
 sub inPeriod {
 
@@ -430,7 +435,7 @@ sub getTimeVars {
   for ($i = 1; $i <= $md; $i++) {
     # Itterate $i from 1 to $md.  If $i happens to land on a Sunday,
     # increment $wk unless $i is also 1, which means its still week 0.
-    if ( (0 == $wd[$i]) && (1 != $md) ) {
+    if ( $wd[$i] == 0 && $i != 1 ) {
       $wk++;
     }
   }

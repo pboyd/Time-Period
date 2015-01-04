@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 19;
+use Test::More tests => 20;
 use Time::Period;
 
 use POSIX;
@@ -33,3 +33,6 @@ is(inPeriod(0, 'wk {3-0}'), -1, 'should return -1 for week numbers less than 1 (
 is(inPeriod(0, 'wk {7}'), -1, 'should return -1 for week numbers greater than 6 (single)');
 is(inPeriod(0, 'wk {7-1}'), -1, 'should return -1 for week numbers greater than 6 (left)');
 is(inPeriod(0, 'wk {1-7}'), -1, 'should return -1 for week numbers greater than 6 (right)');
+
+my $sunday = POSIX::mktime(0, 0, 12, 8, 5, 114); # 01/01/2011 00:00:00 (Saturday)
+is(inPeriod($sunday, 'wk { 2 }'), 1, 'should be able to match the week when the day is Sunday');
